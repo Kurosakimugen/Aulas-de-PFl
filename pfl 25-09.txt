@@ -1,0 +1,55 @@
+Aulas 25/09
+
+1.3
+halves :: [a] -> ([a],[a])
+halves xs = (take half xs,drop half xs)
+where half = length xs `div` 2 == div (length xs 2)
+
+1.4
+last xs = head (drop (length xs - 1) xs)
+last xs = head (reverse xs)
+init xs = reverse (tail (reverse xs))
+init xs = take (length xs - 1) xs
+
+1.7
+(a)[´a´,´b´,´c´] :: [Char] == [String]
+(b)(´a´,´b´,´c´) :: (Char,Char,Char)
+(c)[(False,´0´),(True,´1´)] :: [(Bool,Char)]
+(d)([False,True],[´0´,´1´] :: ([Bool],[Char])
+(e)[tail,init,reverse] :: [ [a] -> [a] ]
+(f)[id,not] :: [ Bool -> Bool ]
+
+1.8
+(a) segundo xs = head (tail xs) :: [a] -> a
+(b) trocar (x, y) = (y, x) :: (a,b) -> (b,a)
+(c) par x y = (x, y) :: a -> b -> (a,b)
+(d) dobro x = 2 ∗ x :: Num a => a -> a
+(e) metade x = x/2 :: Fractional a => a -> a
+(f) minuscula x = x ≥ ´a´ && x ≤ ´z´ :: Char -> Bool 
+(g) intervalo x a b = x ≥ a && x ≤ b :: Ord a => a -> a -> a -> Bool
+(h) palindromo xs = reverse xs == xs :: Eq a => [a] -> Bool
+(i) twice f x = f (f x) :: (b -> b) -> b -> b
+
+1.12
+xor :: Bool -> Bool -> Bool
+xor False False = False
+xor True True = False
+
+xor False True = True 
+xor True False = True
+
+é igual a xor _ _ = True
+
+Outra solução é xor x y = x \== y
+
+1.16
+Units = ["Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove"]
+Tens = ["Dez", "Vinte", ...]
+Hundreds = ["Cem", "Duzentos", ...]
+ten_and_twenty = ["Dez", "Onze", ...]
+
+(0,d) = units !! d
+(1,d) = ten_and_twenty !! d
+(d1,0) = tens !! d1
+(d1,d2) = tens !! d1 ++ "e" units !! d2
+...
