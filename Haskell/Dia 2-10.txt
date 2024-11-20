@@ -1,0 +1,47 @@
+Dia 2/10
+2)
+Intersperse :: a -> [a] -> [a]
+
+Intersperse _ [] = []
+Intersperse _ [X] = [X]
+Intersperse y (X : Xs) = X : y : intersperse y xs
+
+3)
+gcd :: Integer -> Integer -> Integer
+gcd a 0 = a
+gcd a b = gcd b (a `mod` b) 
+
+4)
+Insert :: Ord a => a -> [a] -> [a]
+Insert y [] = [y]
+Insert y (X : Xs) | y <= X = y : X : Xs
+		  | otherwise = x : Insert y Xs
+
+Isort :: Ord a => [a] -> [a]
+Isort [] = []
+Isort (X : Xs) = Insert X (Isort Xs)
+
+6)
+SquareSum :: Integer
+SquareSum = sum[ X ^ 2 | X <- [1 … 100 ] ]
+
+7)
+Approx :: Integer -> Double
+Approx	n = 4 * sum  [factor k | k <- [0 … n ] ]
+	where factor :: Integer -> Double
+	      factor k = (-1) ^ k / FromIntegral (2 * k + 1) 
+
+approx' :: Int -> Double
+approx' n = sqrt ( 12 * sum [...] )
+	where factor k = (-1) ^ k / FromIntegral ( (k + 1) ^ 2)
+
+12) 
+prime :: Integer -> Bool
+prime n = length(divprop n)
+
+15)
+cipher :: Integer -> String -> String
+cipher k cs = [rotateChar c | c <- cs]
+	where LetterToInt c = ord c - ord 'A'
+	      IntToLetter n = chr(n + Ord 'A')
+	      rotateChar c | isUpper c = InToLetter (LetterToInt c + k `mod` 26)
